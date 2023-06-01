@@ -64,7 +64,7 @@ public class CartServices {
 		CartEntity cartFind = getCartDetailByUserIdAndBookId(cart.getUserId(), cart.getBookId());
 		UserEntity userEntity = userRepository.findById(cart.getUserId()).orElse(null);
 		BookEntity bookEntity = bookRepository.findById(cart.getBookId()).orElse(null);
-		if(bookEntity != null && userEntity != null && ((bookEntity.getStoreEntity() == null)||(bookEntity.getStoreEntity() != null && bookEntity.getStoreEntity().getId() != userEntity.getStoreEntity().getId()))) {
+		if(bookEntity != null && userEntity != null && ((bookEntity.getStoreEntity() == null)||((bookEntity.getStoreEntity() != null && bookEntity.getStoreEntity().getId() != userEntity.getStoreEntity().getId())) )) {
 			if(cartFind != null) {
 				int amount = cartFind.getAmount() + cart.getAmount();
 				return updateAmount(cartFind.getId(), amount > 10 ? 10 : amount);
