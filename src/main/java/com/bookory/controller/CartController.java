@@ -50,11 +50,18 @@ public class CartController {
 	@PostMapping("cart")
 	@ResponseBody
 	public ResponseEntity<ResponseObject> addNewCart(@RequestBody CartRequestDTO cart) {
-		if(cartServices.addNewCart(cart) != null) {
-			return ResponseEntity.status(HttpStatus.OK).body(new ResponseObject(200, "Thao tác thực hiện thành công!", true));
-		}else {
-			return ResponseEntity.status(HttpStatus.OK).body(new ResponseObject(200, "Sản phẩm này thuộc cửa hàng của bạn!", false));
+		try {
+			if(cartServices.addNewCart(cart) != null) {
+				return ResponseEntity.status(HttpStatus.OK).body(new ResponseObject(200, "Thao tác thực hiện thành công!", true));
+			}else {
+				return ResponseEntity.status(HttpStatus.OK).body(new ResponseObject(200, "Sản phẩm này thuộc cửa hàng của bạn!", false));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseObject(404, "Dữ liệu không hợp lệ", ""));
+			
 		}
+		
 	}
 
 	@PutMapping("cart/{id}")

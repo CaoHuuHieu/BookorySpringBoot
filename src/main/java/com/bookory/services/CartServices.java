@@ -60,21 +60,27 @@ public class CartServices {
 	}
 
 	
-	public CartEntity addNewCart(CartRequestDTO cart){
+	public CartEntity addNewCart(CartRequestDTO cart) throws Exception{
 		CartEntity cartFind = getCartDetailByUserIdAndBookId(cart.getUserId(), cart.getBookId());
 		UserEntity userEntity = userRepository.findById(cart.getUserId()).orElse(null);
 		BookEntity bookEntity = bookRepository.findById(cart.getBookId()).orElse(null);
-		if(bookEntity != null && userEntity != null && ((bookEntity.getStoreEntity() == null)||((bookEntity.getStoreEntity() != null && bookEntity.getStoreEntity().getId() != userEntity.getStoreEntity().getId())) )) {
-			if(cartFind != null) {
-				int amount = cartFind.getAmount() + cart.getAmount();
-				return updateAmount(cartFind.getId(), amount > 10 ? 10 : amount);
+		
+		if(bookEntity != null || userEntity != null) {
+			if((userEntity.getStoreEntity() == null) || (bookEntity.getStoreEntity().getId() != userEntity.getStoreEntity().getId())) {
+				if(cartFind != null) {
+					int amount = cartFind.getAmount() + cart.getAmount();
+					return updateAmount(cartFind.getId(), amount > 10 ? 10 : amount);
+				}else {
+					CartEntity cartEntity = cartConvert.toCartEntity(cart);
+					return  cartRepository.save(cartEntity);
+				}
 			}else {
-				CartEntity cartEntity = cartConvert.toCartEntity(cart);
-				return  cartRepository.save(cartEntity);
+				return null;
 			}
 		}else
-			return null;
-	}
+			throw new Exception("Resource not found");
+    }
+	
 	public CartEntity updateAmount(long id, int quantity){
 		CartEntity cartEntity = getCartDetailByID(id);
 		cartEntity.setAmount(quantity);
