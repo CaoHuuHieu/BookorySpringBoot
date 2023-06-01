@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
  */
 public class VnpayConfig {
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_Returnurl = "http://localhost:3000/payment-result";
+    public static String vnp_Returnurl = "https://bookstore-bookory.vercel.app/payment-result";
     public static String vnp_TmnCode = "K8WW6LLK";
     public static String vnp_HashSecret = "OCIMTTHTCWGILIJAEMMXRPDWWBCVXNFD";
     public static String vnp_apiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
