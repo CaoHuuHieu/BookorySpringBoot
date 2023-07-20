@@ -29,7 +29,7 @@ import com.bookory.services.BookServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class BookController {
 
 	@Autowired

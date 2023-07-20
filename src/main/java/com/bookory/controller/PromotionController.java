@@ -26,7 +26,7 @@ import com.bookory.services.BookServices;
 import com.bookory.services.PromotionServices;
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api/")
 public class PromotionController {
 	@Autowired
 	PromotionServices promotionServices;

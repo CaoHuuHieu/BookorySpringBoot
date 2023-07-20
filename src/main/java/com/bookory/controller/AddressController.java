@@ -20,7 +20,7 @@ import com.bookory.object.ResponseObject;
 import com.bookory.services.AddressServices;
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class AddressController {
 	@Autowired
 	AddressServices addressServices;

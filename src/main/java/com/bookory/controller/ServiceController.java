@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api/")
 public class ServiceController {
 	@Autowired
 	ServicesPackServices servicesPackServices;

@@ -24,7 +24,7 @@ import com.bookory.services.CategoryServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class CategoryController {
 	@Autowired
 	CategoryServices categoryServices;

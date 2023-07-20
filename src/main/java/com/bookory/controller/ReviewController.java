@@ -21,7 +21,7 @@ import com.bookory.services.OrderServices;
 import com.bookory.services.ReviewServices;
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api/")
 public class ReviewController {
 	@Autowired
 	ReviewServices reviewServices;

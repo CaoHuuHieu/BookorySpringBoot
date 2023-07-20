@@ -21,7 +21,7 @@ import com.bookory.object.ResponseObject;
 import com.bookory.services.ContactServices;
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class ContactController {
 	@Autowired
 	ContactServices contactServices;

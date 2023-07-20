@@ -25,7 +25,7 @@ import com.bookory.services.StoreServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api/")
 public class StoreController {
 	@Autowired
 	StoreServices storeServices;

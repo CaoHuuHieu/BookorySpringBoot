@@ -23,7 +23,7 @@ import com.bookory.services.OrderServices;
 
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api/")
 public class OrderController {
 	@Autowired
 	OrderServices orderServices;

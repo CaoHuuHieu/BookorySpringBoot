@@ -23,7 +23,7 @@ import com.bookory.object.ResponseObject;
 import com.bookory.services.CartServices;
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class CartController {
 	@Autowired
 	CartServices cartServices;

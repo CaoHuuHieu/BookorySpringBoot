@@ -21,7 +21,7 @@ import com.bookory.object.ResponseObject;
 import com.bookory.services.SlideService;
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api/")
 public class SlideController {
 	@Autowired
 	SlideService slideService;

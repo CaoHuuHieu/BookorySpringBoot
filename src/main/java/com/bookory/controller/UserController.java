@@ -34,7 +34,7 @@ import com.bookory.services.UserServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api/")
 public class UserController {
 	@Autowired
 	EmailProvider emailProvider;
