@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookory.entity.TagEntity;
+import com.bookory.entity.Tag;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.TagServices;
+import com.bookory.services.impl.TagServices;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/")
@@ -29,7 +29,7 @@ public class TagController {
 	@GetMapping(value = "tag")
 	@ResponseBody
 	public ResponseEntity<ResponseObject> getAllTag() {
-		List<TagEntity> tagEntities = tagServices.getALlTag();
+		List<Tag> tagEntities = tagServices.getALlTag();
 		if (tagEntities!= null)
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", tagEntities));
@@ -39,7 +39,7 @@ public class TagController {
 	@GetMapping(value = "tag/{id}")
 	@ResponseBody
 	public ResponseEntity<ResponseObject> getTagByID(@PathVariable long id) {
-		TagEntity tagEntity = tagServices.getTagByID(id);
+		Tag tagEntity = tagServices.getTagByID(id);
 		if (tagEntity != null)
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", tagEntity));
@@ -48,8 +48,8 @@ public class TagController {
 
 	@PutMapping(value = "tag/{id}")
 	@ResponseBody
-	public ResponseEntity<ResponseObject> updateTag(@PathVariable long id, @RequestBody TagEntity tag) {
-		TagEntity tagEntity = tagServices.updateTag(id, tag);
+	public ResponseEntity<ResponseObject> updateTag(@PathVariable long id, @RequestBody Tag tag) {
+		Tag tagEntity = tagServices.updateTag(id, tag);
 		if (tagEntity != null)
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", tagEntity));
@@ -59,8 +59,8 @@ public class TagController {
 
 	@PostMapping(value = "tag")
 	@ResponseBody
-	public ResponseEntity<ResponseObject> addNewTag(@RequestBody TagEntity tag) {
-		TagEntity tagEntity = tagServices.addNewTag(tag);
+	public ResponseEntity<ResponseObject> addNewTag(@RequestBody Tag tag) {
+		Tag tagEntity = tagServices.addNewTag(tag);
 		if (tagEntity != null)
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", tagEntity));

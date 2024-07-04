@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bookory.dto.response.ServicePackResponseDTO;
-import com.bookory.entity.ServicePackEntity;
+import com.bookory.entity.ServicePack;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.ServicesPackServices;
+import com.bookory.services.impl.ServicesPackServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.http.HttpSession;
@@ -70,8 +70,8 @@ public class ServiceController {
 			@RequestParam("file") MultipartFile file) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			ServicePackEntity servicePack = mapper.readValue(object, ServicePackEntity.class);
-			ServicePackEntity servicePackEntity = servicesPackServices.addNewService(servicePack, file);
+			ServicePack servicePack = mapper.readValue(object, ServicePack.class);
+			ServicePack servicePackEntity = servicesPackServices.addNewService(servicePack, file);
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", servicePackEntity));
 		} catch (IOException e) {
@@ -88,7 +88,7 @@ public class ServiceController {
 			HttpSession session) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			ServicePackEntity servicePack = mapper.readValue(object, ServicePackEntity.class);
+			ServicePack servicePack = mapper.readValue(object, ServicePack.class);
 			servicesPackServices.updateService(id, servicePack, file);
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", true));
@@ -102,7 +102,7 @@ public class ServiceController {
 	@DeleteMapping(value = "service/{id}")
 	@ResponseBody
 	public ResponseEntity<ResponseObject> deleteServicePack(@PathVariable long id) {
-		ServicePackEntity servicePackEntity = servicesPackServices.deleteService(id);
+		ServicePack servicePackEntity = servicesPackServices.deleteService(id);
 		if (servicePackEntity != null) {
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", true));

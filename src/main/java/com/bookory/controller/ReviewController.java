@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookory.dto.request.ReviewRequestDTO;
 import com.bookory.dto.response.ReviewResponseDTO;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.OrderServices;
-import com.bookory.services.ReviewServices;
+import com.bookory.services.impl.OrderServices;
+import com.bookory.services.impl.ReviewServices;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/")

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bookory.dto.request.VnpayRequestDTO;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.VnpayService;
+import com.bookory.services.impl.VnpayService;
 
 import jakarta.servlet.http.HttpServletRequest;
 @CrossOrigin

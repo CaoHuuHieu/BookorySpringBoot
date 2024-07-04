@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookory.dto.request.PromotionRequestDTO;
-import com.bookory.dto.response.BookBasicInfoDTO;
+import com.bookory.dto.book.BookListDto;
 import com.bookory.entity.PromotionEntity;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.BookServices;
-import com.bookory.services.PromotionServices;
+import com.bookory.services.impl.BookServices;
+import com.bookory.services.impl.PromotionServices;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/")
@@ -49,7 +49,7 @@ public class PromotionController {
 	@GetMapping(value = "promotions/book/{storeId}")
 	@ResponseBody
 	public ResponseEntity<ResponseObject>  getProductForPromotion(@PathVariable("storeId") long storeId, @RequestParam("startDate") Date startDate,  @RequestParam("endDate") Date endDate) {
-		List<BookBasicInfoDTO> books = bookServices.getBookForAddNewPromotion(storeId,startDate, endDate);
+		List<BookListDto> books = bookServices.getBookForAddNewPromotion(storeId,startDate, endDate);
 		if(books != null) {
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", books));
@@ -62,7 +62,7 @@ public class PromotionController {
 	@ResponseBody
 	public ResponseEntity<ResponseObject>  getProductForUpdatePromotion(@PathVariable("storeId") long storeId, 
 			@PathVariable("promotionId") long promotionId){
-		List<BookBasicInfoDTO> books = bookServices.getBookForUpdatePromotion(storeId, promotionId);
+		List<BookListDto> books = bookServices.getBookForUpdatePromotion(storeId, promotionId);
 		if(books != null) {
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", books));

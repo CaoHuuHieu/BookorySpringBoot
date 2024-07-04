@@ -26,11 +26,11 @@ import com.bookory.dto.request.PasswordRequestDTO;
 import com.bookory.dto.request.UserRequestDTO;
 import com.bookory.dto.response.UserBasicInforDTO;
 import com.bookory.dto.response.UserFullInforDTO;
-import com.bookory.entity.UserEntity;
+import com.bookory.entity.User;
 import com.bookory.object.EmailProvider;
 import com.bookory.object.JwtProvider;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.UserServices;
+import com.bookory.services.impl.UserServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController
@@ -207,7 +207,7 @@ public class UserController {
 			ObjectMapper mapper = new ObjectMapper();
 			UserRequestDTO user = null;
 			user = mapper.readValue(object, UserRequestDTO.class);
-			UserEntity userEntity = userServices.updateUser(id, user, file);
+			User userEntity = userServices.updateUser(id, user, file);
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", userEntity));
 		} catch (Exception e) {
@@ -224,7 +224,7 @@ public class UserController {
 			ObjectMapper mapper = new ObjectMapper();
 			UserRequestDTO user = null;
 			user = mapper.readValue(object, UserRequestDTO.class);
-			UserEntity userEntity = userServices.addNewUser(user, file);
+			User userEntity = userServices.addNewUser(user, file);
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", userEntity));
 		} catch (Exception e) {
@@ -236,7 +236,7 @@ public class UserController {
 	@DeleteMapping(value = "user/{id}")
 	@ResponseBody
 	public ResponseEntity<ResponseObject> deleteUser(@PathVariable long id) {
-		UserEntity userEntity = userServices.deleteUser(id);
+		User userEntity = userServices.deleteUser(id);
 		if (userEntity != null)
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", userEntity));

@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bookory.dto.request.CategoryRequestDTO;
+import com.bookory.dto.category.CategoryRequestDTO;
 import com.bookory.entity.CategoryEntity;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.CategoryServices;
+import com.bookory.services.impl.CategoryServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController

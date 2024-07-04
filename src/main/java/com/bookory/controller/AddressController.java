@@ -1,9 +1,8 @@
 package com.bookory.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bookory.services.IAddressService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,17 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bookory.dto.request.AddressRequestDTO;
 import com.bookory.dto.response.AddressResponseDTO;
-import com.bookory.entity.AddressEntity;
-import com.bookory.entity.UserEntity;
+import com.bookory.entity.Address;
+import com.bookory.entity.User;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.AddressServices;
-@CrossOrigin
+
 @RestController
 @RequestMapping("/api/")
 public class AddressController {
-	@Autowired
-	AddressServices addressServices;
-	
+
+	private final IAddressService addressServices;
+
+	public AddressController(IAddressService addressService){
+		this.addressServices = addressService;
+	}
+
+
 	@GetMapping("address/{addressId}")
 	public ResponseEntity<ResponseObject> getAddress(@PathVariable long addressId){
 		AddressResponseDTO address =  addressServices.getAddressById(addressId);
@@ -37,7 +40,7 @@ public class AddressController {
 	}
 	@PutMapping("address/{addressId}")
 	public ResponseEntity<ResponseObject> udpateAddress(@PathVariable Long addressId, @RequestBody AddressRequestDTO address){
-		AddressEntity addressEntity =  addressServices.udpateAddress(addressId, address);
+		Address addressEntity =  addressServices.udpateAddress(addressId, address);
 		if(addressEntity != null)
 			 return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thành công!", address));
@@ -48,7 +51,7 @@ public class AddressController {
 	
 	@PostMapping("address/{userId}")
 	public ResponseEntity<ResponseObject> addAddressForUser(@PathVariable Long userId, @RequestBody AddressRequestDTO address){
-		UserEntity userEntity =  addressServices.addAddressForUser(userId, address);
+		User userEntity =  addressServices.addAddressForUser(userId, address);
 		if(userEntity != null)
 			 return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thành công!", address));

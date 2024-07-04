@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import com.bookory.object.ResponseObject;
-import com.bookory.services.IStorageService;
+import com.bookory.services.impl.IStorageService;
 
 import java.util.List;
 import java.util.stream.Collectors;

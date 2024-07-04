@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bookory.dto.request.StoreRequestDTO;
+import com.bookory.dto.store.StoreRequestDTO;
 import com.bookory.dto.response.StoreResponseDTO;
-import com.bookory.entity.StoreEntity;
+import com.bookory.entity.Store;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.StoreServices;
+import com.bookory.services.impl.StoreServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController
@@ -123,7 +123,7 @@ public class StoreController {
 	@DeleteMapping(value = "store/{id}")
 	@ResponseBody
 	public ResponseEntity<ResponseObject> deleteStore(@PathVariable long id) {
-		StoreEntity storeEntity = storeServices.deleteStore(id);
+		Store storeEntity = storeServices.deleteStore(id);
 		if (storeEntity != null) {
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", true));

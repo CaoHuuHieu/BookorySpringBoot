@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bookory.entity.SlideEntity;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.SlideService;
+import com.bookory.services.impl.SlideService;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/")

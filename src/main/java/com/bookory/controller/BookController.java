@@ -19,13 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bookory.dto.request.BookRequestDTO;
 import com.bookory.dto.request.StoreReportRequest;
-import com.bookory.dto.response.BookBasicInfoDTO;
+import com.bookory.dto.book.BookListDto;
 import com.bookory.dto.response.BookExtendInforDTO;
 import com.bookory.dto.response.BookFullInforDTO;
 import com.bookory.dto.response.BookSold;
-import com.bookory.entity.BookEntity;
+import com.bookory.entity.Book;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.BookServices;
+import com.bookory.services.impl.BookServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 @RestController
@@ -56,7 +56,7 @@ public class BookController {
 	@GetMapping(value = "book/search/{key}")
 	public ResponseEntity<ResponseObject> getBookByID(@PathVariable String key) {
 		try {
-			List<BookBasicInfoDTO> bookBasicInfoDTOs = bookServices.getBookByKeyword(key);
+			List<BookListDto> bookBasicInfoDTOs = bookServices.getBookByKeyword(key);
 			if (bookBasicInfoDTOs!= null) {
 				return ResponseEntity.status(HttpStatus.OK)
 						.body(new ResponseObject(200, "Thao tác thực hiện thành công!", bookBasicInfoDTOs));
@@ -74,7 +74,7 @@ public class BookController {
 	@GetMapping(value = "books")
 	public ResponseEntity<ResponseObject> getAllBook() {
 		try {
-			List<BookBasicInfoDTO> bookBasicInfoDTOs = bookServices.getAllBook();
+			List<BookListDto> bookBasicInfoDTOs = bookServices.getAllBook();
 			if (bookBasicInfoDTOs!= null)
 				return ResponseEntity.status(HttpStatus.OK)
 						.body(new ResponseObject(200, "Thao tác thực hiện thành công!", bookBasicInfoDTOs));
@@ -91,7 +91,7 @@ public class BookController {
 	@GetMapping(value = "book/related/{id}")
 	public ResponseEntity<ResponseObject> getListRelatedBook(@PathVariable long id) {
 		try {
-			List<BookBasicInfoDTO> relatedBookEntities = bookServices.getListRelatedBooks(id);
+			List<BookListDto> relatedBookEntities = bookServices.getListRelatedBooks(id);
 			if (relatedBookEntities!= null) {
 				return ResponseEntity.status(HttpStatus.OK)
 						.body(new ResponseObject(200, "Thao tác thực hiện thành công!", relatedBookEntities));
@@ -109,7 +109,7 @@ public class BookController {
 	@GetMapping(value = "books/{storeId}")
 	public ResponseEntity<ResponseObject> getAllBookByStoreID(@PathVariable Long storeId) throws IOException {
 		try {
-			List<BookBasicInfoDTO> bookStoreEntities = bookServices.getBooksByStoreId(storeId);
+			List<BookListDto> bookStoreEntities = bookServices.getBooksByStoreId(storeId);
 			if (bookStoreEntities!= null) {
 				return ResponseEntity.status(HttpStatus.OK)
 						.body(new ResponseObject(200, "Thao tác thực hiện thành công!", bookStoreEntities));
@@ -179,7 +179,7 @@ public class BookController {
 
 	@DeleteMapping(value = "book/{id}")
 	public ResponseEntity<ResponseObject> deleteBook(@PathVariable long id) {
-		BookEntity bookEntity = bookServices.setBookStatus(id, 2);
+		Book bookEntity = bookServices.setBookStatus(id, 2);
 		if (bookEntity != null) {
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseObject(200, "Thao tác thực hiện thành công!", true));

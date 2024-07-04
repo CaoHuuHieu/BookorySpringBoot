@@ -19,7 +19,7 @@ import com.bookory.dto.request.OrderRequestDTO;
 import com.bookory.dto.response.OrderResponseDTO;
 import com.bookory.dto.response.OrderResponseForStore;
 import com.bookory.object.ResponseObject;
-import com.bookory.services.OrderServices;
+import com.bookory.services.impl.OrderServices;
 
 @CrossOrigin
 @RestController
