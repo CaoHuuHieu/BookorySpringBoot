@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="review", schema = "app")
+@Table(name="review")
 public class Review {
 
 	@Id

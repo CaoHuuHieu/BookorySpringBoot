@@ -3,7 +3,7 @@ package com.bookory.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="subscription_package", schema = "app")
+@Table(name="subscription_package")
 public class SubscriptionPackage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

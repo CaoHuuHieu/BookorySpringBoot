@@ -7,7 +7,7 @@ import com.bookory.dto.store.StoreUpdateDto;
 import com.bookory.entity.Store;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StoreMapper {
     StoreListDto storeToStoreListDto(Store store);
 

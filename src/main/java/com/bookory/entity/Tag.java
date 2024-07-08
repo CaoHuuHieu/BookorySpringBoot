@@ -2,7 +2,7 @@ package com.bookory.entity;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name="tag", schema = "app")
+@Table(name="tag")
 public class Tag {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

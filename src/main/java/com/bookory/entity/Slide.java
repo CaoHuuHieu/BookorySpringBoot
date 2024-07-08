@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="slide", schema = "app")
+@Table(name="slide")
 public class Slide{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -19,10 +19,10 @@ import com.bookory.repository.UserRepository;
 @Service
 @RequiredArgsConstructor
 public class ReviewService implements IReviewService {
-	private final ReviewRepository reviewRepository;
-	private final OrderDetailRepository orderDetailRepository;
-	private final UserRepository userRepository;
-	private final ReviewMapper reviewConvert;
+	private  ReviewRepository reviewRepository;
+	private  OrderDetailRepository orderDetailRepository;
+	private  UserRepository userRepository;
+	private  ReviewMapper reviewConvert;
 
 	
 	public Long createNewView(ReviewSaveDto reviewDto) {

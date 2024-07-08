@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="cart", schema = "app")
+@Table(name="cart")
 public class Cart {
 
 	@Id

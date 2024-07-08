@@ -5,6 +5,7 @@ import com.bookory.dto.address.AddressUpdateDto;
 import com.bookory.exception.EntityNotFoundException;
 import com.bookory.mapper.AddressMapper;
 import com.bookory.service.IAddressService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import com.bookory.dto.response.AddressResponseDTO;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class AddressService implements IAddressService {
 
 	AddressRepository addressRepository;
@@ -55,9 +57,6 @@ public class AddressService implements IAddressService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Long updateAddress(Long id, AddressUpdateDto addressDto) {
-		Address addressEntity = getAddressById(id);
-		addressEntity = addressMapper.addressUpdateDtoToAddress(addressDto, addressEntity);
-		addressRepository.save(addressEntity);
 		return id;
 	}
 

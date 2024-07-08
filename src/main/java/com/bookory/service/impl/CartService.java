@@ -24,11 +24,11 @@ import com.bookory.repository.UserRepository;
 @RequiredArgsConstructor
 public class CartService implements ICartService {
 
-	private final CartRepository cartRepository;
-	private final BookRepository bookRepository;
-	private final CartMapper cartMapper;
-	private final StoreMapper storeMapper;
-	private final UserRepository userRepository;
+	private  CartRepository cartRepository;
+	private  BookRepository bookRepository;
+	private  CartMapper cartMapper;
+	private  StoreMapper storeMapper;
+	private  UserRepository userRepository;
 
 
 	public List<CartResponseDTO> getCartsByUserId(Long userid) throws IOException{
@@ -36,7 +36,7 @@ public class CartService implements ICartService {
 	}
 
 	public Cart getCartDetailByUserIdAndBookId(long userid, long bookid){
-		return cartRepository.findByUserEntityIdAndBookEntityId(userid, bookid);
+		return null;
 	}
 
 	public Long createNewCart(CartSaveDto cartDto) throws Exception {

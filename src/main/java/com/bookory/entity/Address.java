@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="address", schema = "app")
+@Table(name="address")
 public class Address {
 
 	@Id
