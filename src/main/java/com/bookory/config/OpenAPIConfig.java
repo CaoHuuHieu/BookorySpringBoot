@@ -21,5 +21,7 @@ public class OpenAPIConfig {
                                 .type(SecurityScheme.Type.HTTP)
                                 .scheme("bearer")
                                 .bearerFormat("JWT")));
+
+
     }
 }
