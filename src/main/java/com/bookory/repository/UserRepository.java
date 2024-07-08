@@ -7,8 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.bookory.entity.User;
+import org.springframework.stereotype.Repository;
 
 
+@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	User findByEmail(String email);
